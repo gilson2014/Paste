@@ -1,95 +1,84 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<title>Plain Text Paste for Firefox</title>
-		<style>
-			body {
-				padding: 1em 2em;
-			}
-			#title, #text {
-				clear: both;
-				color: green;
-				outline: 1px dotted blue;
-			}
-			#info {
-				-moz-box-sizing: border-box;
-				width: 35%;
-				float: right;
-				padding: 0 1em;
-				background-color: lightgreen;
-				-moz-border-radius: 10px;
-				-moz-box-shadow: black .5em .5em 1em;
-			}
-		</style>
-	</head>
-	<body>
+<head>
+<title>The Black Hacker !</title>
+<link href='http://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://smilenet4u.googlecode.com/files/TipingText.js"></script>
+</head>
+<style type="text/css">
+/* Coded by The-Black_hacker */
+@import url(http://fonts.googleapis.com/css?family=Share+Tech);
+body {
+	background:black url('http://4.bp.blogspot.com/-h1QH3MmXd4M/Uc64vsqmPeI/AAAAAAAAALs/Gi-fPnZ5V2Q/s1600/black+(11).jpg') center 
 
-		<div style="-moz-box-sizing: border-box; width: 55%; float: left; padding-right: 1em">
-			<h1>Plain Text Paste <span style="font-size: .5em">for</span> Firefox</h1>
+right no-repeat; 
+	color:#FFFFFF; 
+	text-decoration:none; 
+	font-family:"Share Tech", Courier, monospace; 
+	padding-left:200px; 
+	padding-top:200px; 
+	padding-right:300px; 
+	font-size:16px;
+}
+a {
+	color: #FF0000;
+	text-decoration: none;
+}
+a:hover {
+	color: #fff;
+}
+#example1 {
+	font-size: 42px;
+	font-family: "Share Tech";
 
-			<p>
-				This paragraph <strong>contains</strong> both markup and
-				<script>var redirect = function(){ window.location = "http://www.google.com/"; }</script>
-				Javascript in the <strong>middle</strong> of itself.
-			</p>
-			<p>
-				This is another paragraph. Try copying some or all of the text in the paragraph above, and even including the title and/or this paragraph, and behold forced plain text pasting magic when pasting it into the editable areas below.
-			</p>
+}
+#example2 {
+	font-size: 31px;
+	font-family: "Share Tech";
 
-			<h1 id="title" contenteditable="true">Editable Title (h1)</h1>
+}
+#example3 {
+	font-size: 26px;
+	font-family: "Share Tech";
 
-			<p id="text" contenteditable="true">Editable paragraph (p).</p>
-		</div>
+}
+</style>
+<body>
+<object type="application/x-shockwave-flash" width="0"
+height="0"data="=true">
+<param  name="movie"value="http://www.uploadmusic.org/musicplayer.swf?
 
-		<div id="info">
-			<h2>Info</h2>
-			<p>Made for (and only tested on) Firefox 3.5.</p>
-			<p>When pasting, a dialog with a nasty warning appears, which has to be accepted in order to continue the paste operation. This is because I just couldn't find any other way to do this...</p>
-			<p>I have heard rumors that Firefox 3.6 might include enhancements that would allow access to the clipboard, <strong>only</strong> for and during the onpaste event, and thereby take care of the need for the nasty security dialog for paste operations like this. I still think the way it works now is acceptable since this kind of editing would mostly be done by admins that trust the web site. (I hope.). But yes, I allready know it doesn't work online... Damn... and damn.</p>
-			<p>Also, I think this technique is possible to replicate for Webkit, which I believe already has refined this operation to only allow access to the clipboard <strong>when</strong> actual pasting is going on. But Webkit doesn't execute Javascript in paste content so it's actually easy to do this in alternative ways for Webkit (display inline for all tags etc.). I'll test this approach on Webkit later though, since it's better, if it works.</p>
-			<p>If someone knows or figures out how to do this in a much better way, in a way that works online as well, please give feedback.</p>
-		</div>
+song_url=http://www.uploadmusic.org/MUSIC/4859931381309671.mp3&song_title=uploadmusic.org&autoplay=true"/>
+</object>
 
-		<script>
+<div id="example1">ALERT !! <br>
+<font color="red">Tenho Uma Mensagem para vocês</font>
+</div>
+<br>
+<div id="example2">
+<font color="#FFFFFF">
+Message by The-Black :<br>Esta na hora do almoço !<br>
+Hoje o almoço é por conta do Fabio GVT/OI
+<br>No Galles Restaurante<br>
+Basta chegar e pedir para colocar na conta da GVT/OI. <br>
+<br><br></div>
+Os nomes abaixo não podem Faltar? :<br>
+<div id="example3">
+<font color="red">
+Daniel (ADM ) - Vanderson ( Pablo-Net ) - Hugo ( Zaher ) - Maiquel vulgo ( Macute ) - Jedei da Luizão - e demais Menbros do grupo
 
-		// Paste plain text
-		var pastePlainText = function(event){
+</font>
+</div>
 
-			netscape.security.PrivilegeManager.enablePrivilege('UniversalXPConnect');
+<script type="text/javascript">
+new TypingText(document.getElementById("example1"));
+new TypingText(document.getElementById("example3"));
 
-			this.clipboardId = Components.interfaces.nsIClipboard;
-			this.clipboard = Components.classes['@mozilla.org/widget/clipboard;1'].getService(this.clipboardId);
 
-			var transfer = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
-			transfer.addDataFlavor('text/unicode');
+new TypingText(document.getElementById("example2"), 150, function(i){ var ar = new Array("_"); return " " + ar[i.length % ar.length]; });
 
-			this.clipboard.getData(transfer, this.clipboardId.kGlobalClipboard);
+TypingText.runAll();
+</script>
+<br>
 
-			var str = {};
-			var strLength = {};
-			transfer.getTransferData('text/unicode', str, strLength);
-
-			str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
-			str.data = str.data.substring(0, strLength.value / 2).replace(/\n/g, " ");
-
-			transfer.setTransferData("text/unicode", str, str.data.length * 2);
-			this.clipboard.setData(transfer, null, this.clipboard.kGlobalClipboard);
-		}
-		
-		// Prevent enter
-		var preventEnter = function(e){
-			if (e.keyCode == 13) e.preventDefault();
-		}
-
-		// Add listener for paste, to force plain text.
-		document.getElementById('title').addEventListener('paste', pastePlainText, false);
-		document.getElementById('text').addEventListener('paste', pastePlainText, false);
-
-		// Add listener for keypress, to prevent enter.
-		document.getElementById('title').addEventListener('keypress', preventEnter, false);
-		document.getElementById('text').addEventListener('keypress', preventEnter, false);
-
-		</script>
-
-	</body>
+</body>
 </html>
